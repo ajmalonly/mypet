@@ -1,0 +1,29 @@
+<div class="container-fluid p-5 bg-primary text-white text-center">
+  <h1 class="display-4 fw-bold">Welcome to My Pet Tracker</h1>
+  <p class="lead">Keep track of all your pets and help others find their way home 🐕🐈🐢</p>
+  <%= link_to "🐾 Register a New Pet", new_pet_path, class: "btn btn-light btn-lg mt-3" %>
+</div>
+
+<div class="container mt-5">
+  <h1 class="mb-4 text-center">My Pets</h1>
+  
+  <div class="row">
+    <% @pets.each do |pet| %>
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card shadow-sm h-100">
+          <!-- Pet Image -->
+          <img src="<%= pet.image_url %>" alt="<%= pet.name %>" class="card-img-top" style="height: 200px; object-fit: cover;">
+          
+          <div class="card-body">
+            <h5 class="card-title"><%= pet.name %></h5>
+            <p class="card-text">
+              <strong>Species:</strong> <%= pet.species.capitalize %> <br>
+              <strong>Found:</strong> <%= pet.found_days_ago %>
+            </p>
+            <%= link_to "View Details", pet_path(pet), class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

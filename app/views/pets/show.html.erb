@@ -1,0 +1,30 @@
+<div class="container mt-5 d-flex justify-content-center">
+  <div class="card shadow-lg" style="max-width: 700px;">
+    <div class="row g-0">
+      <!-- Left Side: Image -->
+      <div class="col-md-5">
+        <img src="<%= @pet.image_url %>" alt="<%= @pet.name %>" class="img-fluid rounded-start h-100" style="object-fit: cover;">
+      </div>
+      
+      <!-- Right Side: Pet Details -->
+      <div class="col-md-7">
+        <div class="card-header bg-primary text-white text-center">
+          <h1 class="display-6"><%= @pet.name %></h1>
+        </div>
+        <div class="card-body">
+          <p class="h5 mb-3"><span class="fw-bold text-info">🐇 Species:</span> <%= @pet.species.capitalize %></p>
+          <p class="h5 mb-4"><span class="fw-bold text-success">📅 Found:</span> <%= @pet.found_days_ago %></p> 
+          
+          <div class="d-flex justify-content-between mt-4">
+            <%= link_to "✏️ Edit", edit_pet_path(@pet), class: "btn btn-warning" %>
+            <%= link_to "🗑️ Delete", 
+                pet_path(@pet), 
+                class: "btn btn-danger", 
+                data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } 
+            %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
